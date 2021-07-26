@@ -1,8 +1,7 @@
 module.exports = {
-  base: '/web-word/',
   title: '前端知识栈',
   descritption: '前端知识栈',
-  host:'10.1.2.140',
+  host:'localhost',
   port: '9000',
   head: [
     [
@@ -20,9 +19,10 @@ module.exports = {
       // { text: 'Home', link: '/' },
       { text: 'web知识体系', link: '/guide/' },
       { text: '组件库', link: '/components/Dialogs/' },
+      { text: '面试', link: '/question/base/' },
       { text: '框架', link: '/framework/BMS/' },
       {
-        text: '前端框架',
+        text: '前端技术',
         items:[
           { text: 'TypeScript', link: 'https://www.tslang.cn/' },
           { text: 'Vue.js', link: 'https://cn.vuejs.org/' },
@@ -79,6 +79,12 @@ module.exports = {
         {
           title: '移动端框架',
           children:['H5']
+        }
+      ],
+      '/question/':[
+        {
+          title: '每日一题',
+          children:['base']
         }
       ]
     },
