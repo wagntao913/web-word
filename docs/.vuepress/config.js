@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/web-word/',
   title: '前端知识栈',
   descritption: '前端知识栈',
   host:'10.1.2.140',
