@@ -383,9 +383,7 @@ export default {
 </script>
 
 ```
-:::tip
 
-:::
 #### 参考文档
 - [JS-SDK说明文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html)  
 - [微信公众号JSSDK获取signature签名](https://blog.csdn.net/wang_97/article/details/91991954)
