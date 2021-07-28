@@ -1,5 +1,6 @@
 module.exports = {
   title: '前端知识栈',
+  base: '/web-word/',
   descritption: '前端知识栈',
   host:'localhost',
   port: '9000',
