@@ -1,19 +1,19 @@
 # :mailbox_with_mail: Nvm 使用与安装
 <!-- ![image](https://images.pexels.com/photos/1906667/pexels-photo-1906667.jpeg?auto=compress&cs=tinysrgb&dpr=1) -->
 
-## 介绍
+## :dart: 介绍
 [nvm](https://github.com/nvm-sh/nvm) is a version manager for node.js, designed to be installed per-user, and invoked per-shell. nvm works on any POSIX-compliant shell (sh, dash, ksh, zsh, bash), in particular on these platforms: unix, macOS, and windows WSL.
-## 下载与安装
+## :dart: 下载与安装
 直接访问[:inbox_tray:](https://github.com/coreybutler/nvm-windows/releases)，选择nvm-setup.zip。下载后直接安装皆可
 ![image](https://persongitbook.oss-cn-beijing.aliyuncs.com/nvmInstall.png)
 
 ![image](https://persongitbook.oss-cn-beijing.aliyuncs.com/nodePosition.png)
-## 验证安装
+## :dart: 验证安装
 打开命令行，直行 nvm -v 命令
 
 ![image](https://persongitbook.oss-cn-beijing.aliyuncs.com/nvmVerify.png)
 
-## 常用命令
+## :dart: 常用命令
 - `nvm install <version>` 安装指定版本，可模糊安装  
 安装v4.4.0，既可nvm install v4.4.0，又可nvm install 4.4  
 

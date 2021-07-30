@@ -1,7 +1,7 @@
 
 # :mailbox_with_mail: vue实现webSocket实时信息通知
 
-## websocket
+## :dart: websocket
 [WebSocket](http://www.ruanyifeng.com/blog/2017/05/websocket.html) 协议在2008年诞生，2011年成为国际标准。所有浏览器都已经支持了。
 它的最大特点就是，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，属于服务器推送技术的一种。
 :::tip 特点  
@@ -16,7 +16,7 @@
 
 ![image](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051503.jpg)
 
-## VUE + WebSocket 长链接实现
+## :dart:  VUE + WebSocket 长链接实现
 在项目的创建 utils/websocket.js
 
 #### 封装socket 

@@ -63,6 +63,7 @@ module.exports = {
             '/guide/knowledge/wechat',
             '/guide/knowledge/amap',
             '/guide/knowledge/websocket',
+            '/guide/knowledge/dataType',
           ]
         }
       ],
