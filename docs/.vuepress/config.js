@@ -1,8 +1,8 @@
 module.exports = {
   title: '前端知识栈',
-  base: '/web-word/',
+  base: '/',
   descritption: '前端知识栈',
-  host:'localhost',
+  host:'10.1.2.140',
   port: '9000',
   head: [
     [
@@ -20,7 +20,7 @@ module.exports = {
       // { text: 'Home', link: '/' },
       { text: 'web知识体系', link: '/guide/' },
       { text: '组件库', link: '/components/Dialogs/' },
-      { text: '面试', link: '/question/base/' },
+      // { text: '面试', link: '/question/base/' },
       { text: '框架', link: '/framework/BMS/' },
       {
         text: '前端技术',
