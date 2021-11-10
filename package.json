@@ -12,9 +12,16 @@
     "@commitlint/cli": "^13.2.0",
     "@commitlint/config-conventional": "^13.2.0",
     "@vuepress/plugin-back-to-top": "^1.8.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
     "vuepress": "^1.8.2"
   },
   "dependencies": {
     "husky": "^7.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
   }
 }
