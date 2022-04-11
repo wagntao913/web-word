@@ -3,6 +3,7 @@ module.exports = {
   base: '/',
   descritption: '前端知识栈',
   host: '10.1.2.140',
+  // host:'10.1.2.140',
   port: '9000',
   head: [
     [
