@@ -2,7 +2,7 @@ module.exports = {
   title: '前端知识栈',
   base: '/',
   descritption: '前端知识栈',
-  host: '10.1.2.140',
+  // host: '10.1.2.140',
   // host:'10.1.2.140',
   port: '9000',
   head: [
@@ -23,7 +23,7 @@ module.exports = {
       { text: '组件库', link: '/components/Dialogs/' },
       // { text: '面试', link: '/question/base/' },
       { text: '前端框架', link: '/framework/' },
-      { text: '产品线', link: '/product/Rescue' },
+      // { text: '产品线', link: '/product/Rescue' },
       {
         text: '前端技术',
         items: [
@@ -54,11 +54,7 @@ module.exports = {
       '/guide/': [
         {
           title: '代码规范',
-          children: [
-            '/guide/specification/',
-            '/guide/specification/js',
-            '/guide/specification/vue'
-          ]
+          children: ['/guide/specification/', '/guide/specification/js', '/guide/specification/vue']
         },
         {
           title: '质量标准',
