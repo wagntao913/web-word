@@ -63,7 +63,7 @@ module.exports = {
         {
           title: '知识汇总',
           children: [
-            // '/guide/knowledge/axios',
+            '/guide/knowledge/axios',
             '/guide/knowledge/nvm',
             '/guide/knowledge/amap',
             '/guide/knowledge/websocket',
