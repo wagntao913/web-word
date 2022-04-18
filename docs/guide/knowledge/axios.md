@@ -247,3 +247,9 @@ export const userLogin = (data: LoginParams) => {
   })
 }
 ```
+
+#### 参考文档
+
+[完整的 Axios 封装](https://juejin.cn/post/6968630178163458084)
+
+[Axios 中文文档](http://www.axios-js.com/zh-cn/docs/)

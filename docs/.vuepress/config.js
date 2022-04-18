@@ -20,9 +20,9 @@ module.exports = {
     nav: [
       // { text: 'Home', link: '/' },
       { text: 'web知识体系', link: '/guide/' },
-      { text: '组件库', link: '/components/Dialogs/' },
+      // { text: '组件库', link: '/components/Dialogs/' },
       // { text: '面试', link: '/question/base/' },
-      { text: '前端框架', link: '/framework/' },
+      { text: '前端框架', link: '/framework/Vue' },
       // { text: '产品线', link: '/product/Rescue' },
       {
         text: '前端技术',
@@ -67,10 +67,15 @@ module.exports = {
             '/guide/knowledge/nvm',
             '/guide/knowledge/amap',
             '/guide/knowledge/websocket',
-            '/guide/knowledge/dataType',
             '/guide/knowledge/wechat',
-            '/guide/knowledge/globalCss'
+            '/guide/knowledge/globalCss',
+            '/guide/knowledge/dataType',
+            '/guide/knowledge/debounce'
           ]
+        },
+        {
+          title: '算法',
+          children: ['/guide/LeetCode/leetcode']
         }
       ],
       '/components/': [
@@ -79,16 +84,7 @@ module.exports = {
           children: ['Dialogs']
         }
       ],
-      '/framework/': [
-        {
-          title: 'BMS框架',
-          children: ['BMS']
-        },
-        {
-          title: '移动端框架',
-          children: ['H5']
-        }
-      ],
+      '/framework/': ['Vue', 'Centos'],
       '/product/': [
         {
           title: '智驾救援',

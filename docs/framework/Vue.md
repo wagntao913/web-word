@@ -668,20 +668,3 @@ const arr = [
 
 #### 服务器部署
 
-##### 使用 [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) 安装 node 环境
-
-1. 运行命令,安装 nvm
-
-```
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-```
-
-![](https://persongitbook.oss-cn-beijing.aliyuncs.com/nvm-install.png?versionId=CAEQIxiBgMCD28nGgBgiIGRiZjc1YjRhODE4NzQ2YWZhMDRhMzcxNjlkMTdkM2Qw)
-
-2. 查看 nvm 配置文件是生成，可以查看 .bash_profile / .bashrc 文件，查看下配置信息写入了那个文件，然后运行命令，是配置生效,运行命令安装相应的node版本即可
-
-```
-source .bashrc
-```
-
-![](https://persongitbook.oss-cn-beijing.aliyuncs.com/nvm-test.png?versionId=CAEQIxiBgMDM4NnGgBgiIGFmYzU3OTJlOWQ0NTRhYjJiYjFkZWFlNWU1OTM0ZTFk)
