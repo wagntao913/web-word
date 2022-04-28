@@ -17,7 +17,8 @@
     "vuepress": "^1.8.2"
   },
   "dependencies": {
-    "husky": "^7.0.2"
+    "husky": "^7.0.2",
+    "vuepress-theme-reco": "^1.6.11"
   },
   "config": {
     "commitizen": {

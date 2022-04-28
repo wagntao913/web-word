@@ -1,20 +1,31 @@
-# :mailbox_with_mail: 微信JS-SDK集成与使用
+---
+title: 微信JS-SDK集成与使用
+date: '2022-04-28'
+tags:
+  - miniProgram
+---
 
 ## 绑定域名
-- 登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”
 
-## Vue项目引入微信JS-sdk
+- 登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS 接口安全域名”
+
+## Vue 项目引入微信 JS-sdk
+
 - 方式一：使用`npm install weixin-js-sdk`
-- 方式二：在vue项目下public文件夹下的index.html页面，引入微信配置文件
+- 方式二：在 vue 项目下 public 文件夹下的 index.html 页面，引入微信配置文件
+
 ```html
 ····
- <!-- 引入微信配置文件 -->
+<!-- 引入微信配置文件 -->
 <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 ····
 ```
+
 ## 权限配置
+
 1. 通过`config` 接口注入权限验证配置
-所有需要使用 JS-SDK 的页面必须先注入配置信息，否则将无法调用（同一个 url 仅需调用一次，对于变化 url 的 SPA 的 web app 可在每次 url 变化时进行调用,目前 Android 微信客户端不支持 pushState 的 H5 新特性，所以使用 pushState 来实现 web app 的页面会导致签名失败，此问题会在 Android6.2 中修复）。
+   所有需要使用 JS-SDK 的页面必须先注入配置信息，否则将无法调用（同一个 url 仅需调用一次，对于变化 url 的 SPA 的 web app 可在每次 url 变化时进行调用,目前 Android 微信客户端不支持 pushState 的 H5 新特性，所以使用 pushState 来实现 web app 的页面会导致签名失败，此问题会在 Android6.2 中修复）。
+
 ```js
 wx.config({
   debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，在pc端时会打印。
@@ -23,29 +34,30 @@ wx.config({
   nonceStr: '', // 必填，生成签名的随机串
   signature: '', // 必填，签名
   jsApiList: [], // 必填，需要使用的JS接口列表
-  openTagList: ['wx-open-launch-weapp'] // 微信开放标签 
+  openTagList: ['wx-open-launch-weapp'] // 微信开放标签
 })
 ```
-2. 通过 `ready `接口处理成功验证
+
+2. 通过 `ready`接口处理成功验证
+
 ```js
-wx.ready(function(){
+wx.ready(function() {
   // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，
   // config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。
   // 对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-});
+})
 ```
+
 3. 通过 `error` 接口处理失败验证
+
 ```js
-wx.error(function(res){
+wx.error(function(res) {
   // config信息验证失败会执行error函数，
   // 如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-});
+})
 ```
 
-
-
-
-## 项目中封装JS-SDK config 方法
+## 项目中封装 JS-SDK config 方法
 
 ```js
 // /utils/wechat.js
@@ -67,13 +79,13 @@ export function weixinAuth (  url,  apiList = ['wx-open-launch-weapp', 'getLocat
     getSignature({ url }).then(res => {
       if (res.appId) {
         wx.config({
-          debug: false, 
-          appId: res.appId, 
-          timestamp: res.timeStamp, 
-          nonceStr: res.nonceStr, 
-          signature: res.signature, 
-          jsApiList: apiList, 
-          openTagList: openTagList 
+          debug: false,
+          appId: res.appId,
+          timestamp: res.timeStamp,
+          nonceStr: res.nonceStr,
+          signature: res.signature,
+          jsApiList: apiList,
+          openTagList: openTagList
         })
         wx.ready(res => {
           resolve(res, wx)
@@ -97,21 +109,26 @@ export function isIOS () {
   return isIphone || isIpad
 }
 ```
+
 ## 页面中调用
+
 - 单独页面的使用
+
 ```js
 import { weixinAuth } from '@/utils/wechat'
 
 export default {
-  create(){
+  create() {
     const url = window.location.href
     weixinAuth(url)
   }
 }
 ```
+
 - 全局引用
+
 ```js
-// 
+//
 import { weixinAuth, isIOS } from '@/utils/wechat'
 
 router.beforeEach(async (to, from, next) => {
@@ -123,15 +140,19 @@ router.beforeEach(async (to, from, next) => {
 })
 
 ```
-## JS-SDK签名算法--后端生成
+
+## JS-SDK 签名算法--后端生成
+
 - appId 和 appsecret 只需登录“微信公众平台”--“开发”--“基本设置”
-- url则是前台传过来的当前页面的地址值
-1. access_token获取
+- url 则是前台传过来的当前页面的地址值
+
+1. access_token 获取
+
 ```java
 public String getAccessToken(String appId , String appSecret){
     // 网页授权接口
     String GetPageAccessTokenUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+appId+"&secret="+appSecret;
- 
+
     HttpClient client = null;
     String access_token = null;
     int expires_in = 0;
@@ -141,7 +162,7 @@ public String getAccessToken(String appId , String appSecret){
         ResponseHandler<String> responseHandler = new BasicResponseHandler();
         String response = client.execute(httpget, responseHandler);
         JSONObject OpenidJSONO = JSONObject.fromObject(response);
-        access_token = String.valueOf(OpenidJSONO.get("access_token"));//获取access_token 
+        access_token = String.valueOf(OpenidJSONO.get("access_token"));//获取access_token
         expires_in = Integer.parseInt(String.valueOf(OpenidJSONO.get("expires_in")));//获取时间
     } catch (Exception e) {
         throw new CommonRuntimeException("获取AccessToken出错！");
@@ -151,7 +172,9 @@ public String getAccessToken(String appId , String appSecret){
     return access_token;
 }
 ```
-2. 获取jsapi_ticket
+
+2. 获取 jsapi_ticket
+
 ```java
 public String getTicket(String accessToken) {
   // 网页授权接口
@@ -175,7 +198,9 @@ public String getTicket(String accessToken) {
   return ticket;
 }
 ```
-3. SHA1加密，参数是由url、jsapi_ticket、noncestr、timestamp组合而成
+
+3. SHA1 加密，参数是由 url、jsapi_ticket、noncestr、timestamp 组合而成
+
 ```java
 public String SHA1(String str) {
   try {
@@ -199,7 +224,9 @@ public String SHA1(String str) {
   return null;
 }
 ```
+
 4.获取 Signature
+
 ```java
 public String getSignature(String url) {
   String signature = "";
@@ -223,21 +250,23 @@ public String getSignature(String url) {
   return signature ;
 }
 ```
+
 ## JS-SDK 接口、开放标签使用
-####  自定义“分享给朋友”及“分享到QQ”按钮的分享内容
+
+### 自定义“分享给朋友”及“分享到 QQ”按钮的分享内容
+
 ```js
 import weixinAuth from '@/utils/wechat'
 export default {
-
-  methods:{
-    shareFriends () {
+  methods: {
+    shareFriends() {
       weixinAuth().then((res, wx) => {
-        wx.updateAppMessageShareData({ 
+        wx.updateAppMessageShareData({
           title: '', // 分享标题
           desc: '', // 分享描述
           link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
           imgUrl: '', // 分享图标
-          success: function () {
+          success: function() {
             // 设置成功
           }
         })
@@ -246,8 +275,11 @@ export default {
   }
 }
 ```
-####  公众号打开小程序
-##### 基本用法
+
+### 公众号打开小程序
+
+#### 基本用法
+
 ```html
 <template>
   <wx-open-launch-weapp
@@ -274,18 +306,20 @@ export default {
   </wx-open-launch-weapp>
 </template>
 <script>
-import { weixinAuth } from '@/utils/wechat'
-export default {
-  created () {
-    const url = window.location.href
-    wechatUtil.initWechat({ url })
-  },
-}
+  import { weixinAuth } from '@/utils/wechat'
+  export default {
+    created() {
+      const url = window.location.href
+      wechatUtil.initWechat({ url })
+    }
+  }
 </script>
-
 ```
-##### 使用动态生成标签
+
+#### 使用动态生成标签
+
 - 封装 动态生成微信开放标签(wx-open-launch-weapp)方法
+
 ```js
 /**
  * @description 动态生成微信发放标签
@@ -297,24 +331,24 @@ export default {
  * }} info
  **/
 export function openLaunchWeapp(info) {
-  if(!is_weixin()){
+  if (!is_weixin()) {
     return false
   }
-  if(is_version()){
+  if (is_version()) {
     var btn = document.getElementById(info.eleId)
     let script = document.createElement('script')
-    script.type = "text-wxtag-template"
+    script.type = 'text-wxtag-template'
     script.text = info.content
     let html = `
     <wx-open-launch-weapp style="width:100%;display:block;" username="${info.appid}" path="${info.url}">
       ${script.outerHTML}
     </wx-open-launch-weapp>`
     btn.innerHTML = html
-    btn.addEventlistener('launch', function (e) {
+    btn.addEventlistener('launch', function(e) {
       console.log('success')
     })
-    btn.addEventListener('error',function (e) {
-      console.log('fail',e.detail)
+    btn.addEventListener('error', function(e) {
+      console.log('fail', e.detail)
       alert(`跳转异常-${e.detail}`)
     })
   } else {
@@ -329,42 +363,44 @@ function is_weixn() {
     return true
   } else {
     return false
-  };
-};
+  }
+}
 // 判断当前微信版本号是否支持--使用微信开放标签
-export function is_version(){
-  let client = false; // 当前版本号是否支持 (默认不支持)
-  let wxInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i); // 微信浏览器信息
+export function is_version() {
+  let client = false // 当前版本号是否支持 (默认不支持)
+  let wxInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i) // 微信浏览器信息
   // 微信版本号 wxInfo[1] = "7.0.18.1740" (示例)
   //进行split转成数组进行判断 [7,0,18,1740] (示例)
-  let version = wxInfo[1].split(".");
+  let version = wxInfo[1].split('.')
   // 判断版本在7.0.12及以上的版本
   if (version[0] >= 7) {
     if (version[1] >= 0) {
       if (version[2] >= 12) {
-        client = true; // 当前版本支持
+        client = true // 当前版本支持
       }
     }
   }
-  return client;
+  return client
 }
 ```
+
 - 页面中使用
+
 ```html
 <template>
-   <div id="launch-btn"></div>
+  <div id="launch-btn"></div>
 </template>
 <script>
-import { openLaunchWeapp } from '@/utils/wechat'
+  import { openLaunchWeapp } from '@/utils/wechat'
 
-export default {
-  mounted(){
-    const weappDom = this.$el.querySelector('.weapp-cover')
-    openLaunchWeapp({
-      eleId:"launch-btn", // 元素id
-      appid: 'gh_xxxx', // 小程序原始id
-      url: 'pages/home/home.html', // 小程序跳转路径
-      content: `
+  export default {
+    mounted() {
+      const weappDom = this.$el.querySelector('.weapp-cover')
+      openLaunchWeapp({
+        eleId: 'launch-btn', // 元素id
+        appid: 'gh_xxxx', // 小程序原始id
+        url: 'pages/home/home.html', // 小程序跳转路径
+        content: `
           <button class="test-btn">点我跳转小程序</button>
           <style>
             .test-btn{
@@ -377,15 +413,15 @@ export default {
               border:none;
             }
           </style>`
-    })
+      })
+    }
   }
-}
 </script>
-
 ```
 
-#### 参考文档
-- [JS-SDK说明文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html)  
-- [微信公众号JSSDK获取signature签名](https://blog.csdn.net/wang_97/article/details/91991954)
-- [微信开放标签 - wx-open-launch-weapp (vue动态生成)](https://www.jianshu.com/p/dd28ae14cd93)
+## 参考文档
+
+- [JS-SDK 说明文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html)
+- [微信公众号 JSSDK 获取 signature 签名](https://blog.csdn.net/wang_97/article/details/91991954)
+- [微信开放标签 - wx-open-launch-weapp (vue 动态生成)](https://www.jianshu.com/p/dd28ae14cd93)
 - [公众号打开小程序最佳解决方案（Vue）](https://www.vue-js.com/topic/602f819896b2cb0032c389d4)

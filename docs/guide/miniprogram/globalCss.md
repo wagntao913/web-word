@@ -1,8 +1,13 @@
-# :mailbox_with_mail: 小程序中使用全局样式
+---
+title: 小程序中使用全局样式
+date: '2022-04-28'
+tags:
+  - miniProgram
+---
 
 ## css 自定义属性
 
-##### 1.语法
+### 1.语法
 
 - `--*`来声明变量名
 - `var(--*)`来使用变量
@@ -22,7 +27,7 @@ body {
 }
 ```
 
-##### 2.全局变量和局部变量
+### 2.全局变量和局部变量
 
 在:root 代码块中声明全局变量，在选择器中声明的为局部变量,局部变量会覆盖全局变量
 
@@ -40,7 +45,7 @@ body {
 
 ![](https://img-blog.csdnimg.cn/img_convert/2b0cae366b455801ab5a197716a02cbb.png)
 
-##### 3.css 计算
+### 3.css 计算
 
 calc() 函数常常被用于跨单位的计算,css 自定义属性也可以参与到 calc 的计算中
 
@@ -54,7 +59,7 @@ calc() 函数常常被用于跨单位的计算,css 自定义属性也可以参�
 
 ![](https://img-blog.csdnimg.cn/img_convert/0e5cce074f440f440c107ac30399817f.png)
 
-##### 4.与 javascript 共同使用
+### 4.与 javascript 共同使用
 
 自定义属性也可以通过 getPropertyValue 和 setProperty 方法操作，可以动态改变自定义属性的值
 
@@ -74,7 +79,7 @@ section.style.setProperty('--text-title-color', 'green')
 
 ## 小程序中使用
 
-#### 1.基础用法
+### 1.基础用法
 
 - web 开发中全局变量是定义在:root，小程序使用时，在 page 中定义变量,
 - 在 app.acss 中的变量可以在全局各个页面中使用，同样也可以在各个页面独立定义页面专属的 css 变量
@@ -91,7 +96,7 @@ page {
 }
 ```
 
-#### 2.小程序中动态设置 css 属性
+### 2.小程序中动态设置 css 属性
 
 ```js
 // 在js中设置css变量
@@ -150,7 +155,7 @@ Page({
 }
 ```
 
-#### 参考文档
+## 参考文档
 
 - [CSS 变量(自定义属性)实用指南及注意事项](https://www.html.cn/archives/9587)
 - [CSS 自定义属性](https://zhuanlan.zhihu.com/p/25714131)

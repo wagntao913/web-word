@@ -1,3 +1,11 @@
+---
+title: Vue 3 后台管理系统搭建
+date: '2022-04-28'
+tags:
+  - vue
+  - Typescript
+---
+
 # Vue 3 后台管理系统搭建
 
 :white_check_mark: UI 库 -- Element Plus
@@ -47,7 +55,7 @@ interface ImportMeta {
 }
 ```
 
-配置打包命令 ` vite build --mode xxxx`
+配置打包命令 `vite build --mode xxxx`
 
 ```json
 // package.json
@@ -667,4 +675,3 @@ const arr = [
 ```
 
 #### 服务器部署
-

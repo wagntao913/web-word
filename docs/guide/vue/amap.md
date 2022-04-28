@@ -1,17 +1,25 @@
-# :mailbox_with_mail: 高德地图在 vue 项目中的使用
+---
+title: 高德地图应用
+date: '2022-04-28'
+tags:
+  - vue
+---
 
-## 创建高德账号，申请key  
+## 创建高德账号，申请 key
+
 1. 登陆高德地图的官网，进行登录，如果没有账号的话，就注册账号  
-<img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/map_register.png">
+   <img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/map_register.png">
 
 2. 注册之后，点击控制台进入，进去之后，我们点击应用管理 -> 我的应用 -> 创建应用
-<img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/create_map_app.png" >  
+   <img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/create_map_app.png" >
 
-3. 点击添加，增加key
-<img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/map_add.png" >
+3. 点击添加，增加 key
+   <img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/map_add.png" >
 
-## 高德地图在vue项目中引入
+## 高德地图在 vue 项目中引入
+
 1. 采用异步加载方式，项目中 utils 目录下创建 loadAMap.js
+
 ```js
   export function loadAMap () {
     // AMap 地图引入
@@ -31,7 +39,7 @@
       }
     })
 
-    //  AMapUI动态引入 
+    //  AMapUI动态引入
     const aMapUI = new Promise((resolve, reject) => {
       if (window.AMapUI) {
         resolve(window.AMapUI)
@@ -55,7 +63,9 @@
     })
   }
 ```
-2. 在需要使用高德地图的界面，引入loadAMap 方法，在界面初始化时(create,mount...)，调用方法加载地图
+
+2. 在需要使用高德地图的界面，引入 loadAMap 方法，在界面初始化时(create,mount...)，调用方法加载地图
+
 ```js
 import { laodAMap } from '@/utils/loadAMap'
 ......
@@ -73,16 +83,17 @@ mounted () {
 ```
 
 ## 高德地图常用插件使用
-### 1.点击地图增加标记点，并展示信息弹框  
 
-> 使用插件: [AMap.Marker](https://lbs.amap.com/api/javascript-api/reference/overlay#marker), [AMap.InfoWindow](https://lbs.amap.com/api/javascript-api/reference/infowindow#InfoWindow), [AMap.Geocoder](https://lbs.amap.com/api/javascript-api/reference/lnglat-to-address#m_AMap.Geocoder) 
- 
+### 1.点击地图增加标记点，并展示信息弹框
+
+> 使用插件: [AMap.Marker](https://lbs.amap.com/api/javascript-api/reference/overlay#marker), [AMap.InfoWindow](https://lbs.amap.com/api/javascript-api/reference/infowindow#InfoWindow), [AMap.Geocoder](https://lbs.amap.com/api/javascript-api/reference/lnglat-to-address#m_AMap.Geocoder)
+
 ```js
   mounted () {
     ......
     //地图加载完毕后
     // 地理编码与逆地理编码类，用于地址描述与坐标之间的转换
-    this.geocoder = new AMap.Geocoder() 
+    this.geocoder = new AMap.Geocoder()
     // 用于在地图上弹出一个详细信息展示窗体
     this.infoWindow = new AMap.InfoWindow({
         isCustom: false,
@@ -144,86 +155,91 @@ mounted () {
   }
 ```
 
-### 2.集成高德地图POI查询功能
- > 使用插件: [AMap.Marker](https://lbs.amap.com/api/javascript-api/reference/overlay#marker), [AMap.InfoWindow](https://lbs.amap.com/api/javascript-api/reference/infowindow#InfoWindow), [AMap.Geocoder](https://lbs.amap.com/api/javascript-api/reference/lnglat-to-address#m_AMap.Geocoder),[AMap.PlaceSearch](https://lbs.amap.com/api/javascript-api/reference/search#m_AMap.PlaceSearch)
+### 2.集成高德地图 POI 查询功能
 
- ```js
- ......
- methods:{
-   ......
-  // 搜索点击事件
-  searchClick () {
-    console.log('== searchClick ==')
-    if (!this.queryForm.address) return false
-    this.getPOIList(this.queryForm.address)
-  },
-  // 调用高德地图 PlaceSearch 方法，获取位置信息列表
-  getPOIList (keywords) {
-    const _this = this
-    // 查询条件可以为动态数据
-    this.POISearch = new AMap.PlaceSearch({
-      // city: city, // 搜索城市
-      // citylimit: true, // 限制搜索城市
-      extensions: 'all'
-      // type: category, // 服务列表
-      // pageSize: page.pageSize, // 每页显示条数
-      // pageIndex: params.page.pageNum // 当前页
-    })
-    this.POISearch.search(keywords, (status, res) => {
-      console.log(status, res)
-      if (status === 'complete' && res.info === 'OK') {
-        _this.POIList = res.poiList.pois
-        console.log(_this.POIList)
-        _this.addPOIMarker(_this.POIList)
-      }
-    })
-  },
-  // POI数据打点
-  addPOIMarker (POIList) {
-    POIList.forEach((item, index) => {
-      // 
-      const marker = new AMap.Marker({
-        map: this.map,
-        icon: require('@/assets/' + (index + 1) + '.png'),
-        position: [item.location.lng, item.location.lat],
-        size: new AMap.Size(21, 32)
-      })
-      marker.on('click', () => {
-        this.showPOIInfo(item)
-      })
-      this.POIMarkers.push(marker)
-    })
-    this.map.setFitView(null, true, [100, 100, 100, 450])
-  },
-  // 显示POIinfo弹框
-  showPOIInfo (value) {
-    const address = value.pname + value.cityname + value.adname + value.address
-    const content = `
-    <div class="title"> ${value.name} </div>
-    <div class="content">
-      <p>地址: ${address} </p>
-      <p>电话: ${value.tel} </p>
-    </div>`
-    this.POIInfoWindow.setContent(content)
-    this.POIInfoWindow.open(this.map, [value.location.lng, value.location.lat])
-    this.map.setCenter([value.location.lng, value.location.lat])
-    this.map.panBy(-185, 0)
-  },
+> 使用插件: [AMap.Marker](https://lbs.amap.com/api/javascript-api/reference/overlay#marker), [AMap.InfoWindow](https://lbs.amap.com/api/javascript-api/reference/infowindow#InfoWindow), [AMap.Geocoder](https://lbs.amap.com/api/javascript-api/reference/lnglat-to-address#m_AMap.Geocoder),[AMap.PlaceSearch](https://lbs.amap.com/api/javascript-api/reference/search#m_AMap.PlaceSearch)
+
+```js
+......
+methods:{
   ......
- }
- ```
- <img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/poi_search.png">
- 
+ // 搜索点击事件
+ searchClick () {
+   console.log('== searchClick ==')
+   if (!this.queryForm.address) return false
+   this.getPOIList(this.queryForm.address)
+ },
+ // 调用高德地图 PlaceSearch 方法，获取位置信息列表
+ getPOIList (keywords) {
+   const _this = this
+   // 查询条件可以为动态数据
+   this.POISearch = new AMap.PlaceSearch({
+     // city: city, // 搜索城市
+     // citylimit: true, // 限制搜索城市
+     extensions: 'all'
+     // type: category, // 服务列表
+     // pageSize: page.pageSize, // 每页显示条数
+     // pageIndex: params.page.pageNum // 当前页
+   })
+   this.POISearch.search(keywords, (status, res) => {
+     console.log(status, res)
+     if (status === 'complete' && res.info === 'OK') {
+       _this.POIList = res.poiList.pois
+       console.log(_this.POIList)
+       _this.addPOIMarker(_this.POIList)
+     }
+   })
+ },
+ // POI数据打点
+ addPOIMarker (POIList) {
+   POIList.forEach((item, index) => {
+     //
+     const marker = new AMap.Marker({
+       map: this.map,
+       icon: require('@/assets/' + (index + 1) + '.png'),
+       position: [item.location.lng, item.location.lat],
+       size: new AMap.Size(21, 32)
+     })
+     marker.on('click', () => {
+       this.showPOIInfo(item)
+     })
+     this.POIMarkers.push(marker)
+   })
+   this.map.setFitView(null, true, [100, 100, 100, 450])
+ },
+ // 显示POIinfo弹框
+ showPOIInfo (value) {
+   const address = value.pname + value.cityname + value.adname + value.address
+   const content = `
+   <div class="title"> ${value.name} </div>
+   <div class="content">
+     <p>地址: ${address} </p>
+     <p>电话: ${value.tel} </p>
+   </div>`
+   this.POIInfoWindow.setContent(content)
+   this.POIInfoWindow.open(this.map, [value.location.lng, value.location.lat])
+   this.map.setCenter([value.location.lng, value.location.lat])
+   this.map.panBy(-185, 0)
+ },
+ ......
+}
+```
 
-### 3. 手机H5实现高德地图地理位置选择
+ <img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/poi_search.png">
+
+
+### 3. 手机 H5 实现高德地图地理位置选择
 
 > 使用插件: [AMap.PlaceSearch](https://lbs.amap.com/api/javascript-api/reference/search#m_AMap.PlaceSearch),[AMap.Autocomplete](https://lbs.amap.com/api/javascript-api/reference/search#m_AMap.Autocomplete),[AMapUI-拖拽选址](https://lbs.amap.com/api/amap-ui/reference-amap-ui/other/positionpicker),[AMap.Geolocation](https://lbs.amap.com/api/javascript-api/reference/location#m_AMap.Geolocation)
 
 #### 实现效果
+
 <img src="https://persongitbook.oss-cn-beijing.aliyuncs.com/position-picker.png">
 
 #### 实现逻辑及代码
+
 - 目录结构
+
 ```js
 └── src                     # 静态资源
     ├── utils                  # 全局公用方法
@@ -234,21 +250,27 @@ mounted () {
         └── postionSearch.vue      # search页面
 
 ```
+
 - 实现逻辑与代码
-1. 封装头部autocomplete组件
-::: tip 遇到问题
-1. 当页面加载高德地图是，高德地图的定位图标 z-index：9999 没有被 van-popup遮盖问题
-  手动设置遮罩层的z-index
-  ```html
-  <van-popup :overlay-style="{zIndex: 99999}"></van-popup>
-  ......
-  <style>
-    .van-popup, .van-overlay{
-      z-index: 999999 !important;
-    }
-  </style>
-  ```
-2.van-search 失焦后自动隐藏autocomplete面板，若选择了提示项无影响，若未选择提示项，面板未消失
+
+1. 封装头部 autocomplete 组件
+   ::: tip 遇到问题
+1. 当页面加载高德地图是，高德地图的定位图标 z-index：9999 没有被 van-popup 遮盖问题
+   手动设置遮罩层的 z-index
+
+```html
+<van-popup :overlay-style="{zIndex: 99999}"></van-popup>
+......
+<style>
+  .van-popup,
+  .van-overlay {
+    z-index: 999999 !important;
+  }
+</style>
+```
+
+2.van-search 失焦后自动隐藏 autocomplete 面板，若选择了提示项无影响，若未选择提示项，面板未消失
+
 ```js
  mounted () {
     this.$nextTick(vm => {
@@ -263,14 +285,23 @@ mounted () {
     })
   },
 ```
+
 :::
+
 ```html
 <!-- AutoComplete.vue 实现头部搜索集成高德的autoComplete -->
 <template>
   <div class="auto-complete-main">
     <!-- 搜索 -->
     <div class="search-content">
-      <van-cell class="province-search van-ellipsis" is-link arrow-direction="down" @click="cityPickerShow"> {{ cityName }} </van-cell>
+      <van-cell
+        class="province-search van-ellipsis"
+        is-link
+        arrow-direction="down"
+        @click="cityPickerShow"
+      >
+        {{ cityName }}
+      </van-cell>
       <van-search
         v-model="keyword"
         show-action
@@ -287,7 +318,11 @@ mounted () {
       </van-search>
     </div>
     <!-- 高德autocomplete展示面板 -->
-    <div v-show="showAutoComplete" class="auto-complete-panel" :style="{'height': panelHeight+'px'}">
+    <div
+      v-show="showAutoComplete"
+      class="auto-complete-panel"
+      :style="{'height': panelHeight+'px'}"
+    >
       <van-list v-if="autocompleteList.length >0" :finished="true" finished-text="没有更多了">
         <van-cell
           v-for="item in autocompleteList"
@@ -325,7 +360,8 @@ mounted () {
   </div>
 </template>
 ```
-``` js
+
+```js
 <script>
 import { areaList } from '@vant/area-data' //使用vant提供的省市信息
 export default {
@@ -491,7 +527,9 @@ export default {
 }
 </style>
 ```
+
 2.positionSearch.vue 页面
+
 ```html
 <template>
   <div class="position-search-main">
@@ -501,13 +539,21 @@ export default {
       <van-icon slot="icon" name="aim" size="18px" class="icon" />
       <template #default>
         <p class="title">我的位置</p>
-        <p class="sub-title">{{ currentPosition.formattedAddress ? currentPosition.formattedAddress :'定位中....' }}</p>
+        <p class="sub-title">
+          {{ currentPosition.formattedAddress ? currentPosition.formattedAddress :'定位中....' }}
+        </p>
       </template>
     </van-cell>
     <div class="address-content" :style="{'height': contentHeight+'px'}">
       <van-list finished-text="没有更多了">
         <template v-if="POIList.length">
-          <van-cell v-for="item in POIList" :key="item.id" class="item" icon="location-o" @click="confirmPosition(item)">
+          <van-cell
+            v-for="item in POIList"
+            :key="item.id"
+            class="item"
+            icon="location-o"
+            @click="confirmPosition(item)"
+          >
             <template #default>
               <p class="title">{{ item.name }}</p>
               <p class="sub-title">{{ item.formattedAddress }}</p>
@@ -526,6 +572,7 @@ export default {
   </div>
 </template>
 ```
+
 ```js
 <script>
 import { loadAMap } from '@/utils/loadAMap'
@@ -707,5 +754,6 @@ export default {
 ```
 
 参考文章
+
 1. [高德地图自定义消息窗体](https://blog.csdn.net/as849167276/article/details/108708746)
 2. [高德官网](https://lbs.amap.com/api/javascript-api/summary)

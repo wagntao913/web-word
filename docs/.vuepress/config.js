@@ -1,29 +1,23 @@
 module.exports = {
-  title: '前端知识栈',
-  base: '/',
+  title: '',
+  base: '/web-word/',
   descritption: '前端知识栈',
-  // host: '10.1.2.140',
-  // host:'10.1.2.140',
+  theme: 'reco',
+  themeConfig: {
+    // 博客配置
+  },
+  locales: {
+    '/': {
+      lang: 'zh-CN'
+    }
+  },
   port: '9000',
-  head: [
-    [
-      'link',
-      {
-        rel: 'icon',
-        href: '/favicon.ico'
-      }
-    ]
-  ],
   themeConfig: {
     // 导航栏配置
-    logo: '/logo.png',
+    subSidebar: 'auto',
     nav: [
-      // { text: 'Home', link: '/' },
-      { text: 'web知识体系', link: '/guide/' },
-      // { text: '组件库', link: '/components/Dialogs/' },
-      // { text: '面试', link: '/question/base/' },
+      { text: '首页', link: '/guide/javascript/dataType' },
       { text: '前端框架', link: '/framework/Vue' },
-      // { text: '产品线', link: '/product/Rescue' },
       {
         text: '前端技术',
         items: [
@@ -53,29 +47,43 @@ module.exports = {
     sidebar: {
       '/guide/': [
         {
-          title: '代码规范',
-          children: ['/guide/specification/', '/guide/specification/js', '/guide/specification/vue']
-        },
-        {
-          title: '质量标准',
-          children: ['/guide/quality/']
-        },
-        {
-          title: '知识汇总',
+          title: 'Javascript',
           children: [
-            '/guide/knowledge/axios',
-            '/guide/knowledge/nvm',
-            '/guide/knowledge/amap',
-            '/guide/knowledge/websocket',
-            '/guide/knowledge/wechat',
-            '/guide/knowledge/globalCss',
-            '/guide/knowledge/dataType',
-            '/guide/knowledge/debounce'
+            { title: '数据类型', path: '/guide/javascript/dataType' },
+            { title: '防抖与节流', path: '/guide/javascript/debounce' }
+          ]
+        },
+        {
+          title: 'Vue',
+          children: [
+            { title: 'axios封装', path: '/guide/vue/axios' },
+            { title: '高德地图应用', path: '/guide/vue/amap' },
+            { title: 'websocket消息通知', path: '/guide/vue/websocket' },
+            { title: 'node版本管理-nvm', path: '/guide/vue/nvm' }
+          ]
+        },
+        {
+          title: '小程序',
+          children: [
+            { title: '微信JSSDK', path: '/guide/miniprogram/wechat' },
+            { title: '小程序全局样式', path: '/guide/miniprogram/globalCss' }
+          ]
+        },
+        {
+          title: '代码规范',
+          collapsable: true,
+          children: [
+            { title: '命名规则', path: '/guide/specification/' },
+            { title: 'js编写规范', path: '/guide/specification/js' },
+            { title: 'Vue编写规范', path: '/guide/specification/vue' },
+            { title: 'Eslint规范', path: '/guide/specification/Eslint' },
+            { title: '提交规范', path: '/guide/specification/commitLint' },
+            { title: 'Prettier', path: '/guide/specification/prettier' }
           ]
         },
         {
           title: '算法',
-          children: ['/guide/LeetCode/leetcode']
+          children: [{ title: 'leetCode Hot 100', path: '/guide/LeetCode/leetcode' }]
         }
       ],
       '/components/': [
@@ -103,6 +111,12 @@ module.exports = {
       toc: { includeLevel: [2, 3] }
     },
     lastUpdated: 'Last Updated',
-    plugins: ['@vuepress/back-to-top']
+    plugins: ['@vuepress/back-to-top'],
+    blogConfig: {
+      tag: {
+        location: -1, // 在导航栏菜单中所占的位置，默认3
+        text: 'Tag' // 默认文案 “标签”
+      }
+    }
   }
 }

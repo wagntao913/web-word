@@ -1,4 +1,9 @@
-# Centos 系统
+---
+title: centos 部署
+date: '2022-04-28'
+tags:
+  - centos
+---
 
 ## 使用 [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md) 安装 node 环境
 

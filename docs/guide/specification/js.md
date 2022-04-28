@@ -1,4 +1,9 @@
-# :blue_book: JS编写规范
+---
+title: JS编写规范
+date: '2022-04-05'
+tags:
+ - lint
+---
 
 ##  采用默认参数精简代码
 :::danger bad

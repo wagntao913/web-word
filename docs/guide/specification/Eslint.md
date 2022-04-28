@@ -1,4 +1,10 @@
-# :blue_book: Lint 标准
+---
+title: Eslint 标准
+date: '2022-04-05'
+tags:
+ - lint
+---
+
 
 ## ESLint
 
@@ -272,151 +278,5 @@ module.exports = {
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-}
-```
-
-## CommitLint + Husky
-
-### 安装
-
-安装 CommitLint
-
-```
-npm install --save-dev @commitlint/config-conventional @commitlint/cli
-```
-
-安装 Husky
-
-```
-npm install --save-dev husky
-```
-
-### commitlint 配置
-
-commit-lint 的配置位于项目根目录下 生成 commitlint.config.js
-
-```
-echo "module.exports = {extends: ['@commitlint/config-conventional']};" > commitlint.config.js
-```
-
-:::tip  
-注意 commitlint.config.js 文件的编码格式应该时 UTF-8
-:::
-
-```js
-module.exports = {
-  ignores: [(commit) => commit.includes('init')],
-  extends: ['@commitlint/config-conventional'],
-  rules: {
-    'body-leading-blank': [2, 'always'],
-    'footer-leading-blank': [1, 'always'],
-    'header-max-length': [2, 'always', 108],
-    'subject-empty': [2, 'never'],
-    'type-empty': [2, 'never'],
-    'type-enum': [
-      2,
-      'always',
-      [
-        'feat',
-        'fix',
-        'perf',
-        'style',
-        'docs',
-        'test',
-        'refactor',
-        'build',
-        'ci',
-        'chore',
-        'revert',
-        'wip',
-        'workflow',
-        'types',
-        'release',
-      ],
-    ],
-  },
-}
-```
-
-### Husky 配置
-
-生成 .husky 文件夹
-
-```
-npx husky install
-```
-
-在 .husky 文件夹下创建 commit-msg
-
-```sh
-#!/bin/sh
-
-# shellcheck source=./_/husky.sh
-. "$(dirname "$0")/_/husky.sh"
-
-npx --no-install commitlint --edit "$1"
-```
-
-### Git 提交规范
-
-- 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范
-
-  - `feat` 增加新功能
-  - `fix` 修复问题/BUG
-  - `style` 代码风格相关无影响运行结果的
-  - `perf` 优化/性能提升
-  - `refactor` 重构
-  - `revert` 撤销修改
-  - `test` 测试相关
-  - `docs` 文档/注释
-  - `chore` 依赖更新/脚手架配置修改等
-  - `workflow` 工作流改进
-  - `ci` 持续集成
-  - `mod` 不确定分类的修改
-  - `wip` 开发中
-  - `types` 类型修改
-
-- 提交示例
-
-```
-git commit -m 'feat(home): add home page'
-```
-
-### 关闭校验
-
-在.husky/commit-msg 内注释以下代码
-
-```
-# npx --no-install commitlint --edit "$1"
-```
-
-## Prettier
-
-用于统一项目代码风格，统一的缩进，单双引号，尾逗号等
-
-prettier 配置文件位于项目根目录下 prettier.config.js
-:::tip
-使用 vscode 编辑器安装 Prettier - Code formatter 插件
-:::
-
-```js
-module.exports = {
-  printWidth: 100, // 单行长度
-  tabWidth: 2, // tab缩进大小,默认为2
-  useTabs: false, // 使用tab缩进，默认false
-  semi: false, // 使用分号, 默认true
-  vueIndentScriptAndStyle: true, // 对vue中的script及style标签缩进
-  singleQuote: true, // 使用单引号
-  quoteProps: 'as-needed', // 仅在必需时为对象的key添加引号
-  bracketSpacing: true, // 在对象前后添加空格-eg: { foo: bar }
-  trailingComma: 'all', // 多行时尽可能打印尾随逗号
-  jsxBracketSameLine: true, //多属性html标签的‘>’折行放置
-  jsxSingleQuote: false, // jsx中使用单引号
-  arrowParens: 'always', //单参数箭头函数参数周围使用圆括号-eg: (x) => x
-  insertPragma: false, // 在已被preitter格式化的文件顶部加上标注
-  requirePragma: false, // 无需顶部注释即可格式化
-  proseWrap: 'never', // 文章换行,默认情况下会对你的markdown文件换行进行format会控制在printwidth以内
-  htmlWhitespaceSensitivity: 'strict', //对HTML全局空白敏感
-  endOfLine: 'auto', //结束行形式
 }
 ```
