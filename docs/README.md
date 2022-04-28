@@ -4,7 +4,7 @@ home: true
 heroText: 前端知识栈
 tagline: 规范、组件、框架
 actionText: 开始学习 →
-actionLink: /guide/specification/
+actionLink: /guide/javascript/dataType
 features:
 - title: 知识体系
   details: 前端H5 研发规范、开发总结
@@ -12,6 +12,9 @@ features:
   details: 前端 App、H5 通用组件维护
 - title: 前端框架
   details: PC端前端框架、App前端框架
+  heroImageStyle: {
+    maxHeight: '200px',
+  }
 # - title: feature 4
 #   details: feature 4 details
 # - title: feature 5

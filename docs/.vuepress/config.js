@@ -1,6 +1,6 @@
 module.exports = {
   title: '',
-  base: '/web-word/',
+  base: '/web-word',
   descritption: '前端知识栈',
   theme: 'reco',
   themeConfig: {
@@ -13,10 +13,11 @@ module.exports = {
   },
   port: '9000',
   themeConfig: {
+    type: 'blog',
     // 导航栏配置
     subSidebar: 'auto',
     nav: [
-      { text: '首页', link: '/guide/javascript/dataType' },
+      { text: '首页', link: '/' },
       { text: '前端框架', link: '/framework/Vue' },
       {
         text: '前端技术',
@@ -50,7 +51,8 @@ module.exports = {
           title: 'Javascript',
           children: [
             { title: '数据类型', path: '/guide/javascript/dataType' },
-            { title: '防抖与节流', path: '/guide/javascript/debounce' }
+            { title: '防抖与节流', path: '/guide/javascript/debounce' },
+            { title: '函数柯里化', path: '/guide/javascript/curry' },
           ]
         },
         {
@@ -113,10 +115,14 @@ module.exports = {
     lastUpdated: 'Last Updated',
     plugins: ['@vuepress/back-to-top'],
     blogConfig: {
-      tag: {
-        location: -1, // 在导航栏菜单中所占的位置，默认3
-        text: 'Tag' // 默认文案 “标签”
-      }
+      // tag: {
+      //   location: -1, // 在导航栏菜单中所占的位置，默认3
+      //   text: 'Tag' // 默认文案 “标签”
+      // }
+    },
+    valineConfig: {
+      appId: '6vo03jHeHlUIU8WjdtuuMWLi-gzGzoHsz',// your appId
+      appKey: 'oMaM11IWapIMW4G2JXPa6nxC', // your appKey
     }
   }
 }
