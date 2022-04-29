@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue 3 后台管理系统搭建</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/web-word/assets/css/0.styles.2e41f892.css" as="style"><link rel="preload" href="/web-word/assets/js/app.453f8909.js" as="script"><link rel="preload" href="/web-word/assets/js/3.0ac0fe76.js" as="script"><link rel="preload" href="/web-word/assets/js/1.2589e18e.js" as="script"><link rel="preload" href="/web-word/assets/js/12.d813eabc.js" as="script"><link rel="prefetch" href="/web-word/assets/js/10.5d4e4071.js"><link rel="prefetch" href="/web-word/assets/js/11.ce0a063b.js"><link rel="prefetch" href="/web-word/assets/js/13.77eabf03.js"><link rel="prefetch" href="/web-word/assets/js/14.0f53624e.js"><link rel="prefetch" href="/web-word/assets/js/15.5fa823d9.js"><link rel="prefetch" href="/web-word/assets/js/16.3a0b3ac3.js"><link rel="prefetch" href="/web-word/assets/js/17.45df1e87.js"><link rel="prefetch" href="/web-word/assets/js/18.9cc86df5.js"><link rel="prefetch" href="/web-word/assets/js/19.ffbf121f.js"><link rel="prefetch" href="/web-word/assets/js/20.07431ba1.js"><link rel="prefetch" href="/web-word/assets/js/21.7c3ba631.js"><link rel="prefetch" href="/web-word/assets/js/22.15a42913.js"><link rel="prefetch" href="/web-word/assets/js/23.21486dbc.js"><link rel="prefetch" href="/web-word/assets/js/24.18251d0e.js"><link rel="prefetch" href="/web-word/assets/js/25.cfe17098.js"><link rel="prefetch" href="/web-word/assets/js/26.a27c5158.js"><link rel="prefetch" href="/web-word/assets/js/27.8512f0a5.js"><link rel="prefetch" href="/web-word/assets/js/28.207bf3b6.js"><link rel="prefetch" href="/web-word/assets/js/29.19ad3185.js"><link rel="prefetch" href="/web-word/assets/js/30.9fcd12ca.js"><link rel="prefetch" href="/web-word/assets/js/4.6f9b95cb.js"><link rel="prefetch" href="/web-word/assets/js/5.6c7564d1.js"><link rel="prefetch" href="/web-word/assets/js/6.0912adfa.js"><link rel="prefetch" href="/web-word/assets/js/7.a822c836.js"><link rel="prefetch" href="/web-word/assets/js/8.2f1a1c0e.js"><link rel="prefetch" href="/web-word/assets/js/9.e0541244.js">
+    <link rel="stylesheet" href="/web-word/assets/css/0.styles.2e41f892.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-130b300a><div data-v-130b300a><div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-130b300a data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2></h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2></p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-130b300a><header class="navbar" data-v-130b300a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/web-word/" class="home-link router-link-active"></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/web-word/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><a href="/web-word/framework/Vue.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  前端框架
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端技术
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.tslang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  TypeScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Vue.js
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://react.docschina.org/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  React
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Vuepress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      UI组件库
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://element.eleme.cn/#/zh-CN" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Element UI
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://element-plus.gitee.io/#/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Element Plus
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.antdv.com/docs/vue/introduce-cn/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Ant Design Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://vant-contrib.gitee.io/vant/#/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Vant
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-130b300a></div> <aside class="sidebar" data-v-130b300a><div class="personal-info-wrapper" data-v-39576ba9 data-v-130b300a><!----> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>20</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>7</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/web-word/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><a href="/web-word/framework/Vue.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  前端框架
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端技术
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.tslang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  TypeScript
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://cn.vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Vue.js
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://react.docschina.org/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  React
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Vuepress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      UI组件库
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://element.eleme.cn/#/zh-CN" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Element UI
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://element-plus.gitee.io/#/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Element Plus
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.antdv.com/docs/vue/introduce-cn/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Ant Design Vue
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://vant-contrib.gitee.io/vant/#/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Vant
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><a href="/web-word/framework/Vue.html" aria-current="page" class="active sidebar-link">Vue 3 后台管理系统搭建</a></li><li><a href="/web-word/framework/Centos.html" class="sidebar-link">centos 部署</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Vue 3 后台管理系统搭建</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-130b300a><main class="page"><section><div class="page-title"><h1 class="title">Vue 3 后台管理系统搭建</h1> <div data-v-f875f3fc><!----> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2022-4-28</span></i> <i class="iconfont reco-eye" data-v-f875f3fc><span id="/web-word/framework/Vue.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-f875f3fc><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>vue</span><span class="tag-item" data-v-f875f3fc>Typescript</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="vue-3-后台管理系统搭建"><a href="#vue-3-后台管理系统搭建" class="header-anchor">#</a> Vue 3 后台管理系统搭建</h1> <p>✅ UI 库 -- Element Plus
+✅ 图标库 -- Iconify
+✅ 路由 -- Vue Router
+✅ 网络请求 -- Axios</p> <h4 id="升级内容"><a href="#升级内容" class="header-anchor">#</a> 升级内容</h4> <ul><li>使用 Vue3 重构框架</li> <li>使用 Typescript 编写</li> <li>使用 Vite 作为打包工具</li> <li>实现脚手架 yesway-cli</li></ul> <h4 id="实施计划"><a href="#实施计划" class="header-anchor">#</a> 实施计划</h4> <h2 id="_1-vite-基础配置"><a href="#_1-vite-基础配置" class="header-anchor">#</a> 1. Vite 基础配置</h2> <h4 id="环境变量设置"><a href="#环境变量设置" class="header-anchor">#</a> 环境变量设置</h4> <p>根目录创建 <code>.env.dev</code>、<code>.env.production</code>、<code>.env.test</code>文件,以 <code>VITE_</code> 为前缀创建环境变量</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// .env.dev</span>
+<span class="token constant">NODE_ENV</span> <span class="token operator">=</span> dev
+
+<span class="token constant">VITE_APP_TITLE</span> <span class="token operator">=</span> <span class="token string">'BMS后台管理平台'</span>
+
+<span class="token constant">VITE_OUT_DIR</span> <span class="token operator">=</span> <span class="token string">'bms-dev'</span>
+
+<span class="token constant">VITE_API_BASE_URL</span> <span class="token operator">=</span> <span class="token string">'http://10.1.11.197:40001/bms'</span>
+</code></pre></div><p>同时创建 <code>/src/types/end.d.ts</code>文件,用于 Ts 提示</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">/// &lt;reference types=&quot;vite/client&quot; /&gt;</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">ImportMetaEnv</span> <span class="token punctuation">{</span>
+  <span class="token keyword">readonly</span> <span class="token constant">VITE_APP_TITLE</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">readonly</span> <span class="token constant">VITE_OUT_DIR</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">readonly</span> <span class="token constant">VITE_API_BASE_URL</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">ImportMeta</span> <span class="token punctuation">{</span>
+  <span class="token keyword">readonly</span> env<span class="token operator">:</span> ImportMetaEnv
+<span class="token punctuation">}</span>
+</code></pre></div><p>配置打包命令 <code>vite build --mode xxxx</code></p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token comment">// package.json</span>
+<span class="token punctuation">{</span>
+  ......
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span><span class="token punctuation">{</span>
+     <span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vite --mode dev&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;build:dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vite build --mode dev&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;build:test&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vite build --mode test&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;build:prod&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vite build --mode production&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  .....
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="vite-插件配置"><a href="#vite-插件配置" class="header-anchor">#</a> vite 插件配置</h4> <h6 id="unplugin-auto-import"><a href="#unplugin-auto-import" class="header-anchor">#</a> <a href="https://github.com/antfu/unplugin-auto-import" target="_blank" rel="noopener noreferrer">unplugin-auto-import<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h6> <p>1.安装<code>unplugin-auto-import</code>,自动导入 Vite、Webpack、Rollup 和 esbuild 的 API。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> unplugin-auto-import -D
+</code></pre></div><p>2.使用与配置
+在 vite.config.ts 中引入与使用</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">import</span> AutoImport <span class="token keyword">from</span> <span class="token string">'unplugin-auto-import/vite'</span>
+
+<span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      imports<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'vue'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 全局引入Vue3和注册</span>
+      resolvers<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token function">ElementPlusResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment">//三方组件库引入</span>
+      dts<span class="token operator">:</span> <span class="token string">'./auto-imports.d.ts'</span><span class="token punctuation">,</span>  <span class="token comment">// 自动引入文件存放位置</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h6 id="vite-plugin-html"><a href="#vite-plugin-html" class="header-anchor">#</a> <a href="https://github.com/vbenjs/vite-plugin-html/blob/main/README.zh_CN.md" target="_blank" rel="noopener noreferrer">vite-plugin-html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h6> <p>1.安装<code>vite-plugin-compression</code>,针对 index.html，提供压缩和基于 ejs 模板功能</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> vite-plugin-html -D
+</code></pre></div><p>2.使用与配置
+修改<code>index.html</code>文件，在其中增加 ejs 标签</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>icon<span class="token punctuation">&quot;</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/favicon.ico<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>viewport<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>width=device-width, initial-scale=1.0<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>&lt;%- title %&gt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>在<code>vite.config.ts</code>中配置</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> createHtmlPlugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vite-plugin-html'</span>
+<span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">createHtmlPlugin</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+      minify<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 是否压缩html</span>
+      entry<span class="token operator">:</span><span class="token string">'src/main.ts'</span><span class="token punctuation">,</span> <span class="token comment">// 入口文件</span>
+      template<span class="token operator">:</span><span class="token string">'index.html'</span><span class="token punctuation">,</span><span class="token comment">// 模板相对路径</span>
+      inject<span class="token operator">:</span><span class="token punctuation">{</span> <span class="token comment">// 注入HTML数据</span>
+        title<span class="token operator">:</span> env<span class="token punctuation">.</span><span class="token constant">VITE_TITLE</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h6 id="vite-plugin-compression"><a href="#vite-plugin-compression" class="header-anchor">#</a> <a href="https://github.com/vbenjs/vite-plugin-compression/blob/main/README.zh_CN.md" target="_blank" rel="noopener noreferrer">vite-plugin-compression<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h6> <p>1.安装 <code>vite-plugin-compression</code>,使用 gzip 或者 brotli 来压缩资源.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> vite-plugin-compression -D
+</code></pre></div><p>2.使用与配置
+在 vite.config.ts 文件中，引入与配置插件</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// vite.config.ts</span>
+<span class="token keyword">import</span> viteCompression <span class="token keyword">from</span> <span class="token string">'vite-plugin-compression'</span>
+
+<span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">viteCompression</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      verbose<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//在控制台输出压缩结果</span>
+      filter<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(js|mjs|json|css|html)$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">,</span> <span class="token comment">// 制定不压缩资源</span>
+      disable<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 是否禁用</span>
+      threshold<span class="token operator">:</span> <span class="token number">10240</span><span class="token punctuation">,</span> <span class="token comment">//体积大于threshold才会被压缩，单位b</span>
+      algorithm<span class="token operator">:</span>	<span class="token string">'gzip'</span><span class="token punctuation">,</span> <span class="token comment">//	压缩算法,可选 [ 'gzip' , 'brotliCompress' ,'deflate' , 'deflateRaw']</span>
+      deleteOriginFile<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 压缩完是否删除源文件</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_2-element-plus-引入"><a href="#_2-element-plus-引入" class="header-anchor">#</a> 2. Element-Plus 引入</h2> <p>1.安装 <a href="https://element-plus.org/zh-CN/component/button.html" target="_blank" rel="noopener noreferrer">Element-Plus<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> element-plus
+</code></pre></div><p>2.组件按需引入
+使用 vite 插件 <code>unplugin-vue-components</code> 和 <code>unplugin-auto-import</code>实现组件的自动按需引入,并在 vite.config.ts 中配置插件</p> <div class="language- extra-class"><pre class="language-text"><code>npm install -D unplugin-vue-components unplugin-auto-import
+</code></pre></div><div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// vite.config.ts</span>
+<span class="token keyword">import</span> AutoImport <span class="token keyword">from</span> <span class="token string">'unplugin-auto-import/vite'</span>
+<span class="token keyword">import</span> Components <span class="token keyword">from</span> <span class="token string">'unplugin-vue-components/vite'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ElementPlusResolver <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'unplugin-vue-components/resolvers'</span>
+
+<span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">AutoImport</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      imports<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'vue'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      dts<span class="token operator">:</span> <span class="token string">'src/auto-import.d.ts'</span><span class="token punctuation">,</span>
+      resolvers<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token function">ElementPlusResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Components</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      resolvers<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token function">ElementPlusResolver</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          importStyle<span class="token operator">:</span> <span class="token string">'sass'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>3.针对 message、messageBox 等组件的引入
+在 src 目录下创建<code>gloable</code>文件夹，在该文件夹下引入一些全局配置</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// gloable/index.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> App <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ElMessageBox<span class="token punctuation">,</span> ElMessage<span class="token punctuation">,</span> IElMessageBox<span class="token punctuation">,</span> Message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'element-plus'</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">module</span> <span class="token string">'@vue/runtime-core'</span> <span class="token punctuation">{</span>
+  <span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ComponentCustomProperties</span> <span class="token punctuation">{</span>
+    $message<span class="token operator">:</span> Message
+    $msgbox<span class="token operator">:</span> IElMessageBox
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">globalRegister</span><span class="token punctuation">(</span>app<span class="token operator">:</span> App<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>globalProperties<span class="token punctuation">.</span>$msgbox <span class="token operator">=</span> ElMessageBox
+  app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>globalProperties<span class="token punctuation">.</span>$message <span class="token operator">=</span> ElMessage
+
+  app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElMessageBox<span class="token punctuation">)</span>
+  app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElMessage<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>4.Element-Plus 按需引入时，相关的配置
+在根组件<code>App.vue</code>中使用<code>el-config-provider</code>来进行 element-plus 的全局配置</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// app.vue</span>
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>el<span class="token operator">-</span>config<span class="token operator">-</span>provider
+    <span class="token operator">:</span>size<span class="token operator">=</span><span class="token string">&quot;elConfig.size&quot;</span>
+    <span class="token operator">:</span>z<span class="token operator">-</span>index<span class="token operator">=</span><span class="token string">&quot;elConfig.zIndex&quot;</span>
+    <span class="token operator">:</span>locale<span class="token operator">=</span><span class="token string">&quot;elConfig.locale&quot;</span>
+  <span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>router<span class="token operator">-</span>view <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>config<span class="token operator">-</span>provider<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script setup lang<span class="token operator">=</span><span class="token string">&quot;ts&quot;</span><span class="token operator">&gt;</span>
+  <span class="token keyword">import</span> en <span class="token keyword">from</span> <span class="token string">'element-plus/es/locale/lang/en'</span>
+  <span class="token keyword">import</span> zhCn <span class="token keyword">from</span> <span class="token string">'element-plus/es/locale/lang/zh-cn'</span>
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> useSystemStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./store/system'</span>
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> ElConfigAttr <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./types/type'</span>
+
+  <span class="token keyword">const</span> systemStore <span class="token operator">=</span> <span class="token function">useSystemStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> elConfig<span class="token operator">:</span> ElConfigAttr <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    zIndex<span class="token operator">:</span> <span class="token number">3000</span><span class="token punctuation">,</span>
+    size<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    autoInsertSpace<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    message<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    locale<span class="token operator">:</span> systemStore<span class="token punctuation">.</span>language <span class="token operator">===</span> <span class="token string">'zhCn'</span> <span class="token operator">?</span> zhCn <span class="token operator">:</span> en
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><h2 id="_3-图标库引入与封装"><a href="#_3-图标库引入与封装" class="header-anchor">#</a> 3. 图标库引入与封装</h2> <h5 id="iconify-组件库"><a href="#iconify-组件库" class="header-anchor">#</a> iconify 组件库</h5> <p>1.管理系统使用<a href="https://icon-sets.iconify.design/?query=language" target="_blank" rel="noopener noreferrer">iconify<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>图标库</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> @iconify/iconify
+</code></pre></div><p>2.使用 vite 插件 <code>vite-plugin-purge-icons</code> 处理图标的引入，将我们所使用的 Iconify 图标都已 html 的 dom 节点形式保存在 html 中，这样我们就可以不发送 http 请求就可以使用图标了</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> vite-plugin-purge-icons @iconify/json --dev
+</code></pre></div><div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// vite.config.ts</span>
+<span class="token keyword">import</span> PurgeIcons <span class="token keyword">from</span> <span class="token string">'vite-plugin-purge-icons'</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">PurgeIcons</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>3.封装 <a href="/src/components/Icon.vue">Icon 组件</a></p> <h5 id="elementplus-组件库"><a href="#elementplus-组件库" class="header-anchor">#</a> elementPlus 组件库</h5> <p>1.安装 elementPlus 图标组件库</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> @element-plus/icons-vue
+</code></pre></div><p>2.全局按需引入</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// gloable/index.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AddLocation<span class="token punctuation">,</span> Edit<span class="token punctuation">,</span> Search<span class="token punctuation">,</span> SwitchButton <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@element-plus/icons-vue'</span>
+<span class="token keyword">import</span> Icon <span class="token keyword">from</span> <span class="token string">'../components/Icon.vue'</span>
+<span class="token keyword">import</span> SvgIcon <span class="token keyword">from</span> <span class="token string">'../Components/SvgIcon.vue'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> icons <span class="token operator">=</span> <span class="token punctuation">[</span>Edit<span class="token punctuation">,</span> Search<span class="token punctuation">,</span> AddLocation<span class="token punctuation">,</span> SwitchButton<span class="token punctuation">]</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">globalRegister</span><span class="token punctuation">(</span>app<span class="token operator">:</span> App<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+  app<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'icon'</span><span class="token punctuation">,</span> Icon<span class="token punctuation">)</span>
+  app<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'svg-icon'</span><span class="token punctuation">,</span> SvgIcon<span class="token punctuation">)</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> icon <span class="token keyword">of</span> icons<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    app<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span>icon<span class="token punctuation">.</span>name<span class="token punctuation">,</span> icon<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token operator">...</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="自定义-svg-图标"><a href="#自定义-svg-图标" class="header-anchor">#</a> 自定义 SVG 图标</h5> <p>1.使用 vite 插件<code>vite-plugin-svg-icons</code>生成 svg 雪碧图</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> vite-plugin-svg-icons -D
+</code></pre></div><p>2.在 vite.config.ts 中配置插件,main.ts 中引入</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// vite.config.ts</span>
+<span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">createSvgIconsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment">// 指定需要缓存的图标文件夹</span>
+      iconDirs<span class="token operator">:</span> <span class="token punctuation">[</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token string">'src/assets/svg'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">// 指定symbolId格式</span>
+      symbolId<span class="token operator">:</span> <span class="token string">'icon-[dir]-[name]'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span><span class="token operator">...</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// main.ts</span>
+<span class="token keyword">import</span> <span class="token string">'virtual:svg-icons-register'</span>
+</code></pre></div><p>3.封装<a href="/src/components/SvgIcon.vue">SvgIcon</a></p> <p>4.图标使用</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-icon</span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>skyblue<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>edit</span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-icon</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg-icon</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>alipay<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg-icon</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>icon</span> <span class="token attr-name">:icon</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>`mdi:content-copy`<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>icon</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="_4-axios-的封装"><a href="#_4-axios-的封装" class="header-anchor">#</a> 4. Axios 的封装</h2> <p>1.安装 axios</p> <div class="language-bash extra-class"><pre class="language-bash"><code>  <span class="token function">yarn</span> <span class="token function">add</span> axios
+</code></pre></div><p>2.封装 <a href="/src/utils/http.ts">axios</a>
+请求取消封装<a href="http://www.axios-js.com/zh-cn/docs/#%E5%8F%96%E6%B6%88" target="_blank" rel="noopener noreferrer">文档说明<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// 请求重复取消</span>
+<span class="token keyword">const</span> pendingMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 生成唯一的每个请求的唯一key</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getPendingKey</span> <span class="token operator">=</span> <span class="token punctuation">(</span>config<span class="token operator">:</span> AxiosRequestConfig<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> <span class="token punctuation">{</span> url<span class="token punctuation">,</span> method<span class="token punctuation">,</span> params<span class="token punctuation">,</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> config
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> data <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> data <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>url<span class="token punctuation">,</span> method<span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'&amp;'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 储存每个请求的唯一cancel回调, 以此为标识</span>
+<span class="token keyword">function</span> <span class="token function">addPending</span><span class="token punctuation">(</span>config<span class="token operator">:</span> AxiosRequestConfig<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> pendingKey <span class="token operator">=</span> <span class="token function">getPendingKey</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+  config<span class="token punctuation">.</span>cancelToken <span class="token operator">=</span>
+    config<span class="token punctuation">.</span>cancelToken <span class="token operator">||</span>
+    <span class="token keyword">new</span> <span class="token class-name">axios</span><span class="token punctuation">.</span><span class="token function">CancelToken</span><span class="token punctuation">(</span><span class="token punctuation">(</span>cancel<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>pendingMap<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>pendingKey<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pendingMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>pendingKey<span class="token punctuation">,</span> cancel<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 取消重复请求</span>
+<span class="token keyword">function</span> <span class="token function">removePending</span><span class="token punctuation">(</span>config<span class="token operator">:</span> AxiosRequestConfig<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> pendingKey <span class="token operator">=</span> <span class="token function">getPendingKey</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>pendingMap<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>pendingKey<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> cancelToken <span class="token operator">=</span> pendingMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>pendingKey<span class="token punctuation">)</span>
+    <span class="token function">cancelToken</span><span class="token punctuation">(</span>pendingKey<span class="token punctuation">)</span>
+    pendingMap<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>pendingKey<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>3.api 请求使用<a href="/src/api/request.ts">request</a>
+增加接口请求参数、返回数据的类型泛型的传入</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">HTTPConfig</span> <span class="token keyword">extends</span> <span class="token class-name">AxiosRequestConfig</span> <span class="token punctuation">{</span>
+  url<span class="token operator">:</span> <span class="token builtin">string</span>
+  method<span class="token operator">:</span> Method
+  data<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token punctuation">}</span>
+  params<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">any</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ResponseData<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span> <span class="token punctuation">{</span>
+  code<span class="token operator">:</span> <span class="token builtin">number</span>
+  desc<span class="token operator">:</span> <span class="token builtin">string</span>
+  msg<span class="token operator">:</span> <span class="token builtin">string</span>
+  data<span class="token operator">:</span> <span class="token constant">T</span> <span class="token operator">|</span> <span class="token builtin">any</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_5-pinia-状态管理"><a href="#_5-pinia-状态管理" class="header-anchor">#</a> 5.Pinia 状态管理</h2> <p>1.安装<a href="https://pinia.vuejs.org/" target="_blank" rel="noopener noreferrer">Pinia<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> pinia
+
+</code></pre></div><p>2.引入注册
+在 main.ts 中引入并使用 pinia</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// main.ts</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createPinia <span class="token punctuation">}</span> from pinia
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createPinia</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span>
+</code></pre></div><p>3.创建 store 文件夹，创建不同模块的 store,以 user 模块为例</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// store/user.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> defineStore <span class="token punctuation">}</span> from pinia
+
+<span class="token keyword">const</span> useUserStore <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">'USER'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">state</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      username<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      sex<span class="token operator">:</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  getter<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">changeUsername</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>username <span class="token operator">=</span> username
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>4.在页面中使用</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{username}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{userStore.username}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>updateUser<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>update<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ts<span class="token punctuation">&quot;</span></span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> useUserStore<span class="token punctuation">,</span> storeToRefs <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/store/user'</span>
+
+  <span class="token keyword">const</span> userStore <span class="token operator">=</span> <span class="token function">useUserStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 结构出来的数据都是响应式数据</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> username<span class="token punctuation">,</span> sex <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">storeToRefs</span><span class="token punctuation">(</span>userStore<span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">updateUser</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    userStore<span class="token punctuation">.</span>username <span class="token operator">=</span> <span class="token string">'yesway update'</span>
+    userStore<span class="token punctuation">.</span><span class="token function">$patch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      state<span class="token punctuation">.</span>username <span class="token operator">=</span> <span class="token string">'yesway update'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    userStore<span class="token punctuation">.</span><span class="token function">$patch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      username<span class="token operator">:</span> <span class="token string">'yesway update'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    userStore<span class="token punctuation">.</span><span class="token function">changeUsername</span><span class="token punctuation">(</span><span class="token string">'yesway update'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>5.自定义 Pinia 持久化存储
+在<code>src/plugins</code>文件中创建 <code>piniaPlugin.ts</code>,在<code>main.ts</code>中引入并使用</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> PiniaPluginContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'pinia'</span>
+
+<span class="token keyword">const</span> __piniaKey <span class="token operator">=</span> <span class="token string">'__PINIAKEY__'</span>
+
+<span class="token keyword">type</span> <span class="token class-name">OptPinia</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  key<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token comment">// storage中的prefix</span>
+  storage<span class="token operator">:</span> <span class="token string">'localStorage'</span> <span class="token operator">|</span> <span class="token string">'sessionStorage'</span> <span class="token comment">// 存储位置</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">piniaPlugin</span> <span class="token operator">=</span> <span class="token punctuation">(</span>options<span class="token operator">:</span> OptPinia<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>context<span class="token operator">:</span> PiniaPluginContext<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> store <span class="token punctuation">}</span> <span class="token operator">=</span> context
+    <span class="token keyword">const</span> itemKey <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>options<span class="token operator">?.</span>key <span class="token operator">??</span> __piniaKey<span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>store<span class="token punctuation">.</span>$id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+
+    <span class="token keyword">const</span> data <span class="token operator">=</span> window<span class="token punctuation">[</span>options<span class="token punctuation">.</span>storage<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span>itemKey<span class="token punctuation">)</span>
+      <span class="token operator">?</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>window<span class="token punctuation">[</span>options<span class="token punctuation">.</span>storage<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span>itemKey<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    store<span class="token punctuation">.</span><span class="token function">$subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      window<span class="token punctuation">[</span>options<span class="token punctuation">.</span>storage<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span>itemKey<span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token function">toRaw</span><span class="token punctuation">(</span>store<span class="token punctuation">.</span>$state<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token operator">...</span>store<span class="token punctuation">.</span>$state<span class="token punctuation">,</span>
+      <span class="token operator">...</span>data
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> piniaPlugin
+</code></pre></div><div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">import</span> piniaPlugin <span class="token keyword">from</span> <span class="token string">'./plugins/piniaPlugin'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>createPinia<span class="token punctuation">}</span> from pinia
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createPinia</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+store<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">piniaPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span> storage<span class="token operator">:</span> <span class="token string">'sessionStorage'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+······
+</code></pre></div><h2 id="_6-国际化配置"><a href="#_6-国际化配置" class="header-anchor">#</a> 6. 国际化配置</h2> <h2 id="_7-问题汇总"><a href="#_7-问题汇总" class="header-anchor">#</a> 7.问题汇总</h2> <h6 id="sass-全局变量在-vue-ts-中的使用"><a href="#sass-全局变量在-vue-ts-中的使用" class="header-anchor">#</a> Sass 全局变量在 vue+ts 中的使用</h6> <p>1.创建变量定义文件<code>styles/variables.module.css</code>文件,结尾以**.module.scss,并创建 **.module.scss.d.ts 声明文件</p> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">// variables.module.css.d.ts</span>
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">IGlobalScss</span> <span class="token punctuation">{</span>
+  headerHeight<span class="token operator">:</span> <span class="token builtin">string</span>
+  hoverBg<span class="token operator">:</span> <span class="token builtin">string</span>
+  menuBg<span class="token operator">:</span> <span class="token builtin">string</span>
+  menuTextColor<span class="token operator">:</span> <span class="token builtin">string</span>
+  menuTextActive<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> variables<span class="token operator">:</span> IGlobalScss
+<span class="token keyword">export</span> <span class="token keyword">default</span> variables
+</code></pre></div><p>2.在<code>.vue</code>文件中使用</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-menu</span>
+    <span class="token attr-name">:background-color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>variables.menuBg<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:active-text-color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>variables.menuTextActive<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:text-color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>variables.menuTextColor<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>menuitem</span>
+      <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item in userStore.allRoutes<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:activeColor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>variables.menuTextActive<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:text-color</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>variables.menuTextColor<span class="token punctuation">&quot;</span></span>
+    <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>menuitem</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-menu</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> variables <span class="token keyword">from</span> <span class="token string">'@/styles/variables.module.scss'</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>3.在使用 sass 全局变量,不能在 vite 中引入 scss 预配置,</p> <ul><li>处理方式 : 将需要用到的全局变量单独放置一个文件，不在 vite 引入的文件中使用，这样会导致重复的数据要在两个 scss 文件声明<br>
+更优的方式，待研究</li></ul> <h6 id="面包屑导航递归函数"><a href="#面包屑导航递归函数" class="header-anchor">#</a> 面包屑导航递归函数</h6> <div class="language-ts extra-class"><pre class="language-ts"><code>描述：
+<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">'/system'</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token string">'系统'</span><span class="token punctuation">,</span>
+    children<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        path<span class="token operator">:</span> <span class="token string">'/system/role'</span><span class="token punctuation">,</span>
+        name<span class="token operator">:</span> <span class="token string">'角色'</span><span class="token punctuation">,</span>
+        children<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            path<span class="token operator">:</span> <span class="token string">'/system/role/list'</span><span class="token punctuation">,</span>
+            name<span class="token operator">:</span> <span class="token string">'列表'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            path<span class="token operator">:</span> <span class="token string">'/system/role/detail'</span><span class="token punctuation">,</span>
+            name<span class="token operator">:</span> <span class="token string">'详情'</span><span class="token punctuation">,</span>
+            children<span class="token operator">:</span><span class="token punctuation">[</span>
+              <span class="token punctuation">{</span>path<span class="token operator">:</span><span class="token string">'/system/role/detail/list'</span><span class="token punctuation">,</span>name<span class="token operator">:</span><span class="token string">'tst'</span><span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/system/role/table'</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">'表格'</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">'/task'</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token string">'任务'</span><span class="token punctuation">,</span>
+    children<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        path<span class="token operator">:</span> <span class="token string">'/task/platform'</span><span class="token punctuation">,</span>
+        name<span class="token operator">:</span> <span class="token string">'待办任务'</span><span class="token punctuation">,</span>
+        children<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            path<span class="token operator">:</span> <span class="token string">'/task/platform/detail'</span><span class="token punctuation">,</span>
+            name<span class="token operator">:</span> <span class="token string">'任务详情'</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+
+查找dart在数组arr的层级关系并输出：
+例如：<span class="token string">'/system/role/detail'</span>
+输出：<span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/system'</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">'系统'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/system/role'</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">'角色'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/system/role/detail'</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">'列表'</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+解答：
+  <span class="token keyword">interface</span> <span class="token class-name">BreadcrumbItem</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token builtin">string</span>
+    to<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">let</span> target<span class="token operator">:</span> BreadcrumbItem<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">getBreadcrumbList</span> <span class="token operator">=</span> <span class="token punctuation">(</span>routeList<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dart<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> targetList <span class="token operator">=</span> dart<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span>
+    targetList<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    routeList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> str <span class="token operator">=</span> item<span class="token punctuation">.</span>path<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>path <span class="token operator">===</span> dart<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        target<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token operator">:</span> routeList<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> to<span class="token operator">:</span> routeList<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>path <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>children <span class="token operator">&amp;&amp;</span> item<span class="token punctuation">.</span>children<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> targetList<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        target<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token operator">:</span> routeList<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> to<span class="token operator">:</span> routeList<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>path <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token function">getBreadcrumbList</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>children<span class="token punctuation">,</span> dart<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+
+</code></pre></div><h4 id="服务器部署"><a href="#服务器部署" class="header-anchor">#</a> 服务器部署</h4></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022-4-28 15:25:25</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/web-word/framework/Centos.html">
+            centos 部署
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/web-word/framework/Vue.html#_1-vite-基础配置" class="sidebar-link reco-side-_1-vite-基础配置" data-v-cb1513f6>1. Vite 基础配置</a></li><li class="level-2" data-v-cb1513f6><a href="/web-word/framework/Vue.html#_2-element-plus-引入" class="sidebar-link reco-side-_2-element-plus-引入" data-v-cb1513f6>2. Element-Plus 引入</a></li><li class="level-2" data-v-cb1513f6><a href="/web-word/framework/Vue.html#_3-图标库引入与封装" class="sidebar-link reco-side-_3-图标库引入与封装" data-v-cb1513f6>3. 图标库引入与封装</a></li><li class="level-2" data-v-cb1513f6><a href="/web-word/framework/Vue.html#_4-axios-的封装" class="sidebar-link reco-side-_4-axios-的封装" data-v-cb1513f6>4. Axios 的封装</a></li><li class="level-2" data-v-cb1513f6><a href="/web-word/framework/Vue.html#_5-pinia-状态管理" class="sidebar-link reco-side-_5-pinia-状态管理" data-v-cb1513f6>5.Pinia 状态管理</a></li><li class="level-2" data-v-cb1513f6><a href="/web-word/framework/Vue.html#_6-国际化配置" class="sidebar-link reco-side-_6-国际化配置" data-v-cb1513f6>6. 国际化配置</a></li><li class="level-2" data-v-cb1513f6><a href="/web-word/framework/Vue.html#_7-问题汇总" class="sidebar-link reco-side-_7-问题汇总" data-v-cb1513f6>7.问题汇总</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/web-word/assets/js/app.453f8909.js" defer></script><script src="/web-word/assets/js/3.0ac0fe76.js" defer></script><script src="/web-word/assets/js/1.2589e18e.js" defer></script><script src="/web-word/assets/js/12.d813eabc.js" defer></script>
+  </body>
+</html>
