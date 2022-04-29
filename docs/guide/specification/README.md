@@ -1,6 +1,7 @@
 ---
 title: 命名规则
 date: '2022-04-05'
+isShowComments: false
 tags:
  - lint
 ---

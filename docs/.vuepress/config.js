@@ -1,6 +1,6 @@
 module.exports = {
   title: '',
-  base: '/web-word',
+  base: '/web-word/',
   descritption: '前端知识栈',
   theme: 'reco',
   themeConfig: {
@@ -12,6 +12,10 @@ module.exports = {
     }
   },
   port: '9000',
+  head: [
+    ['link', { href: 'https://cdn.jsdelivr.net/npm/@docsearch/css@alpha', rel: 'stylesheet' }],
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/@docsearch/js@alpha' }]
+  ],
   themeConfig: {
     type: 'blog',
     // 导航栏配置
@@ -52,7 +56,7 @@ module.exports = {
           children: [
             { title: '数据类型', path: '/guide/javascript/dataType' },
             { title: '防抖与节流', path: '/guide/javascript/debounce' },
-            { title: '函数柯里化', path: '/guide/javascript/curry' },
+            { title: '函数柯里化', path: '/guide/javascript/curry' }
           ]
         },
         {
@@ -76,10 +80,10 @@ module.exports = {
           collapsable: true,
           children: [
             { title: '命名规则', path: '/guide/specification/' },
-            { title: 'js编写规范', path: '/guide/specification/js' },
+            { title: 'Js编写规范', path: '/guide/specification/js' },
             { title: 'Vue编写规范', path: '/guide/specification/vue' },
             { title: 'Eslint规范', path: '/guide/specification/Eslint' },
-            { title: '提交规范', path: '/guide/specification/commitLint' },
+            { title: 'Commit规范', path: '/guide/specification/commitLint' },
             { title: 'Prettier', path: '/guide/specification/prettier' }
           ]
         },
@@ -121,8 +125,8 @@ module.exports = {
       // }
     },
     valineConfig: {
-      appId: '6vo03jHeHlUIU8WjdtuuMWLi-gzGzoHsz',// your appId
-      appKey: 'oMaM11IWapIMW4G2JXPa6nxC', // your appKey
+      appId: '6vo03jHeHlUIU8WjdtuuMWLi-gzGzoHsz', // your appId
+      appKey: 'oMaM11IWapIMW4G2JXPa6nxC' // your appKey
     }
   }
 }
